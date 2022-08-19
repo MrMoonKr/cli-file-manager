@@ -528,7 +528,11 @@ func initItems(pText string, disk cfm.Status) {
 	l.Rows = cfm.ReadFiles(path, showHidden)
 	l.TextStyle = ui.NewStyle(ui.ColorWhite)
 	l.WrapText = false
+
 	l.SetRect(0, 0, cfm.GetCliWidth()/2, int(float64(cfm.GetCliHeight())*0.73))
+	//w, h := ui.TerminalDimensions()
+	//l.SetRect(0, 0, w/2, int(float64(h)*0.73))
+
 	l.BorderStyle.Fg = ui.ColorBlue
 	l.TitleStyle.Modifier = ui.ModifierBold
 	l.SelectedRowStyle.Fg = ui.ColorBlue
@@ -537,6 +541,7 @@ func initItems(pText string, disk cfm.Status) {
 	p.Title = "Help Menu"
 	p.Text = pText
 	p.SetRect(cfm.GetCliWidth()/2, 0, cfm.GetCliWidth(), int(float64(cfm.GetCliHeight())*0.58))
+	//p.SetRect(w/2, 0, w, int(float64(h)*0.58))
 	p.BorderStyle.Fg = ui.ColorBlue
 	p.TitleStyle.Modifier = ui.ModifierBold
 
@@ -553,6 +558,7 @@ func initItems(pText string, disk cfm.Status) {
 	}
 	p3.Border = true
 	p3.SetRect(cfm.GetCliWidth()/2, int(float64(cfm.GetCliHeight())*0.73), cfm.GetCliWidth(), int(float64(cfm.GetCliHeight())*0.58))
+	//p3.SetRect(w/2, int(float64(h)*0.73), w, int(float64(h)*0.58))
 	p3.BorderStyle.Fg = ui.ColorBlue
 	p3.TitleStyle.Modifier = ui.ModifierBold
 
@@ -560,6 +566,7 @@ func initItems(pText string, disk cfm.Status) {
 	p2.Title = "File Information"
 	p2.Text = cfm.GetFileInformations(fmt.Sprintf("%v/%v", path, getFileName(0)))
 	p2.SetRect(0, cfm.GetCliHeight(), cfm.GetCliWidth(), int(float64(cfm.GetCliHeight())*0.73))
+	//p2.SetRect(0, h, w, int(float64(h)*0.73))
 	p2.BorderStyle.Fg = ui.ColorBlue
 	p2.WrapText = false
 	p2.TitleStyle.Modifier = ui.ModifierBold

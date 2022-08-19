@@ -2,24 +2,27 @@ package pkg
 
 import (
 	"fmt"
-	"log"
-	"os"
-	"os/exec"
 	"strconv"
-	"strings"
+
+	ui "github.com/gizak/termui/v3"
 )
 
 func getCliSize() []string {
-	cmd := exec.Command("stty", "size")
-	cmd.Stdin = os.Stdin
-	out, err := cmd.Output()
-	if err != nil {
-		log.Fatal(err)
-	}
 
-	s := string(out)
-	s = strings.TrimSpace(s)
-	return strings.Split(s, " ")
+	w, h := ui.TerminalDimensions()
+
+	return []string{strconv.Itoa(h), strconv.Itoa(w)}
+
+	// cmd := exec.Command("stty", "size")
+	// cmd.Stdin = os.Stdin
+	// out, err := cmd.Output()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	//s := string(out)
+	//s = strings.TrimSpace(s)
+	//return strings.Split(s, " ")
 }
 
 func GetCliHeight() int {
